@@ -1,0 +1,53 @@
+{
+  "name": "launchix",
+  "version": "0.1.0",
+  "main": "dist/main.js",
+  "scripts": {
+    "build:react": "webpack --mode development --config config/webpack.react.config.js",
+    "build:electron": "webpack --mode development --config config/webpack.config.js",
+    "watch:react": "webpack-dev-server --mode development --config config/webpack.react.config.js",
+    "watch:electron": "webpack --mode development --config config/webpack.config.js --watch",
+    "start:electron": "electron .",
+    "start": "nodemon --watch ./dist/**/* --watch public/**/* --exec npm run start:electron"
+  },
+  "author": "Cahil Foley",
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.4.0",
+    "@babel/plugin-proposal-class-properties": "^7.4.0",
+    "@babel/plugin-transform-arrow-functions": "^7.2.0",
+    "@babel/preset-env": "^7.4.2",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.3.3",
+    "@types/electron-devtools-installer": "^2.2.0",
+    "@types/history": "^4.7.2",
+    "@types/node": "^11.12.0",
+    "@types/react": "^16.8.8",
+    "@types/react-dom": "^16.8.3",
+    "@types/react-redux": "^7.0.5",
+    "@types/react-router": "^4.4.5",
+    "@types/react-router-dom": "^4.3.1",
+    "babel-loader": "^8.0.5",
+    "cross-env": "^5.2.0",
+    "electron": "^4.1.1",
+    "html-webpack-plugin": "^3.2.0",
+    "nodemon": "^1.18.10",
+    "prettier": "^1.16.4",
+    "typescript": "^3.3.4000",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-server": "^3.2.1"
+  },
+  "dependencies": {
+    "connected-react-router": "^6.3.2",
+    "history": "^4.9.0",
+    "react": "^16.8.5",
+    "react-dom": "^16.8.5",
+    "react-redux": "^6.0.1",
+    "react-router": "^5.0.0",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0",
+    "reselect": "^4.0.0"
+  },
+  "license": "MIT"
+}

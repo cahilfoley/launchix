@@ -11,18 +11,14 @@ attachEvents(ipcMain)
 const createWindow = () => {
   window = new BrowserWindow({
     width: 1360,
-    height: 800,
-    webPreferences: { nodeIntegration: true }
+    height: 800
   })
 
   window.loadURL(
     debug.devMode
-      ? 'http://localhost:8080/dist/index.html#/home'
+      ? 'http://localhost:8080/dist/index.html'
       : url.format({
-          pathname: path.join(
-            process.cwd(),
-            debug.devMode ? 'dev/index.html' : 'dist/index.html'
-          ),
+          pathname: path.join(process.cwd(), 'dist/index.html'),
           protocol: 'file:',
           slashes: true
         })

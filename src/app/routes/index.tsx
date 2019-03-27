@@ -5,7 +5,7 @@ import Home from '../containers/Home'
 const routes = (
   <div>
     <Switch>
-      <Route path="/home" component={Home} />
+      <Route path="/" component={Home} />
     </Switch>
   </div>
 )

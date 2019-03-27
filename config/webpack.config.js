@@ -20,6 +20,10 @@ const config = {
     ]
   },
   resolve: {
+    alias: {
+      shared: path.resolve(process.cwd(), 'src/shared/')
+    },
+    modules: [path.resolve(process.cwd(), 'src/main'), 'node_modules'],
     extensions: ['.ts', '.tsx', '.js']
   },
   node: {

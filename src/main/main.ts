@@ -1,9 +1,8 @@
-const url = require('url')
-const path = require('path')
-
+import * as url from 'url'
+import * as path from 'path'
 import { app, BrowserWindow, ipcMain } from 'electron'
-import debug from './utils/debug'
-import { attachEvents } from './ipcEvents'
+import debug from 'utils/debug'
+import { attachEvents } from 'events/ipcListeners'
 
 let window: BrowserWindow | null
 

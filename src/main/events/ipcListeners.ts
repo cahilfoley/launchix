@@ -2,10 +2,11 @@ import { exec } from 'child_process'
 const fs = require('fs')
 const path = require('path')
 import { IpcMessageEvent, IpcMain } from 'electron'
-import { Launchable } from '../app/store/launcher/types'
+import { LOAD_STATE, IPC_RUN_LAUNCHABLE } from 'shared/ipcTypes'
 
 export function attachEvents(ipcMain: IpcMain) {
-  ipcMain.on('LOAD_STATE', (event: IpcMessageEvent) => {
+  ipcMain.on(LOAD_STATE, (event: IpcMessageEvent, ...args: any[]) => {
+    console.log(LOAD_STATE, 'event running')
     if (fs.existsSync(path.join(process.cwd(), 'settings/store.json'))) {
       try {
         event.returnValue = JSON.parse(
@@ -23,8 +24,9 @@ export function attachEvents(ipcMain: IpcMain) {
   })
 
   ipcMain.on(
-    'RUN_LAUNCHABLE',
-    (event: IpcMessageEvent, launchable: Launchable) => {
+    IPC_RUN_LAUNCHABLE,
+    (event: IpcMessageEvent, launchable: StoreLaunchable) => {
+      console.log(IPC_RUN_LAUNCHABLE, 'event running', launchable)
       exec(`${launchable.command} ${launchable.args.join(' ')}`)
       event.sender.send('LAUNCHABLE_RESULT')
     }

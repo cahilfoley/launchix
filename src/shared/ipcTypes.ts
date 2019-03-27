@@ -1,0 +1,2 @@
+export const LOAD_STATE = 'LOAD_STATE'
+export const IPC_RUN_LAUNCHABLE = 'IPC_RUN_LAUNCHABLE'

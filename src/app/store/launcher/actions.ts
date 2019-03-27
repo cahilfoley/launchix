@@ -1,21 +1,19 @@
+import { Dispatch } from 'redux'
+import { ipcRenderer, IpcMessageEvent } from 'electron'
+import { AppState } from 'store/reducers'
+import { ThunkResult } from 'store/actions'
+import { IPC_RUN_LAUNCHABLE } from 'shared/ipcTypes'
+import { getLaunchable } from './selectors'
 import {
   CREATE_LAUNCHABLE,
   DELETE_LAUNCHABLE,
   RUN_LAUNCHABLE_FAILUIRE,
   RUN_LAUNCHABLE_SUCCESS,
-  RUN_LAUNCHABLE,
   UPDATE_LAUNCHABLE,
-  Launchable,
   RunLauncableOutcomeAction,
   RunLaunchableFailureAction,
-  RunLaunchableSuccessAction,
-  StoreLaunchable
+  RunLaunchableSuccessAction
 } from './types'
-import { Dispatch } from 'redux'
-import { ipcRenderer, IpcMessageEvent } from 'electron'
-import { AppState } from '../reducers'
-import { getLaunchable } from './selectors'
-import { ThunkResult } from '../actions'
 
 export function createLaunchable(launchable: Launchable) {
   return {
@@ -75,6 +73,6 @@ export function runLaunchable(id: number): ThunkResult<void> {
         }
       }
     )
-    ipcRenderer.send(RUN_LAUNCHABLE, launchable)
+    ipcRenderer.send(IPC_RUN_LAUNCHABLE, launchable)
   }
 }

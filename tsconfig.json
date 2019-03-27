@@ -5,7 +5,11 @@
     "noImplicitAny": true,
     "module": "commonjs",
     "target": "esnext",
-    "jsx": "react"
+    "jsx": "react",
+    "baseUrl": ".",
+    "paths": {
+      "*": ["src/*", "src/main/*", "src/app/*", "node_modules/*"]
+    }
   },
   "exclude": ["node_modules"],
   "compileOnSave": false,

@@ -16,7 +16,7 @@ const createWindow = () => {
 
   window.loadURL(
     debug.devMode
-      ? 'http://localhost:8080/dist/index.html'
+      ? 'http://localhost:8080/index.html'
       : url.format({
           pathname: path.join(process.cwd(), 'dist/index.html'),
           protocol: 'file:',

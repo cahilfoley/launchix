@@ -19,11 +19,11 @@ const config = {
   output: {
     filename: 'renderer.js',
     path: path.resolve(process.cwd(), 'dist'),
-    publicPath: 'http://localhost:8080/dist/'
+    publicPath: 'http://localhost:8080/'
   },
   devServer: {
     contentBase: path.resolve(process.cwd(), 'dist'),
-    publicPath: 'http://localhost:8080/dist/'
+    publicPath: 'http://localhost:8080/'
   },
   module: {
     rules: [
@@ -40,7 +40,10 @@ const config = {
     alias: {
       shared: path.resolve(process.cwd(), 'src/shared/')
     },
-    modules: [path.resolve(process.cwd(), 'src/main'), 'node_modules'],
+    modules: [
+      path.join(process.cwd(), 'src/app'),
+      'node_modules'
+    ],
     extensions: ['.ts', '.tsx', '.js']
   },
   plugins: [

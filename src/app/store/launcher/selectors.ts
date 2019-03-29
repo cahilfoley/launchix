@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect'
-import { AppState } from '../reducers'
+import { AppState } from 'store/reducers'
 
 export function getLauncher(state: AppState) {
   return state.launcher

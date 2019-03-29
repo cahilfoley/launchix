@@ -1,7 +1,7 @@
+import { ThunkAction, ThunkDispatch } from 'redux-thunk'
 import { LauncherActionTypes } from './launcher/types'
 import { SystemActionTypes } from './system/types'
 import { AppState } from './reducers'
-import { ThunkAction, ThunkDispatch } from 'redux-thunk'
 import { Dispatch } from 'redux'
 
 export * from './launcher/actions'

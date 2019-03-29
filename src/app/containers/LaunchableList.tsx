@@ -1,10 +1,11 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
-import { StoreLaunchable } from '../store/launcher/types'
-import { AppState } from '../store/reducers'
-import { getLaunchables } from '../store/selectors'
-import { runLaunchable, AppActionTypes } from '../store/actions'
 import { ThunkDispatch } from 'redux-thunk'
+import { AppState } from 'store/reducers'
+import { getLaunchables } from 'store/selectors'
+import { runLaunchable, AppActionTypes } from 'store/actions'
+
+import { List, ListItem, ListItemText } from '@material-ui/core'
 
 interface LaunchableListProps {
   launchables: StoreLaunchable[]
@@ -16,23 +17,22 @@ const LaunchableList: React.FC<LaunchableListProps> = ({
   runLaunchable
 }) => (
   <div>
-    <ul>
+    <List>
       {launchables.length
         ? launchables.map(launchable => (
-            <li key={launchable.id}>
-              <a
-                href="#"
-                onClick={e => {
-                  e.preventDefault()
-                  runLaunchable(launchable.id)
-                }}
-              >
-                {launchable.label}
-              </a>
-            </li>
+            <ListItem
+              button
+              key={launchable.id}
+              onClick={e => {
+                e.preventDefault()
+                runLaunchable(launchable.id)
+              }}
+            >
+              <ListItemText primary={launchable.label} />
+            </ListItem>
           ))
         : 'No launchables yet'}
-    </ul>
+    </List>
   </div>
 )
 

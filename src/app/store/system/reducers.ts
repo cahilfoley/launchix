@@ -1,6 +1,6 @@
 import { SystemState, SystemActionTypes, UPDATE_SESSION } from './types'
 
-const initialState: SystemState = {
+const initialState: Readonly<SystemState> = {
   loggedIn: false,
   session: '',
   userName: ''

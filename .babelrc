@@ -6,14 +6,6 @@
     ],
     "plugins": [
         "@babel/plugin-proposal-class-properties",
-        "@babel/plugin-transform-arrow-functions",
-        [
-            "import",
-            {
-                "libraryName": "@material-ui/core",
-                "libraryDirectory": ".",
-                "camel2DashComponentName": false
-            }
-        ]
+        "@babel/plugin-transform-arrow-functions"
     ]
 }

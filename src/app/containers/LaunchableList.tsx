@@ -5,17 +5,16 @@ import { AppState } from 'store/reducers'
 import { getLaunchables } from 'store/selectors'
 import { runLaunchable, AppActionTypes } from 'store/actions'
 
-import { List, ListItem, ListItemText } from '@material-ui/core'
+import List from '@material-ui/core/List'
+import ListItem from '@material-ui/core/ListItem'
+import ListItemText from '@material-ui/core/ListItemText'
 
 interface LaunchableListProps {
   launchables: StoreLaunchable[]
   runLaunchable: (id: number) => void
 }
 
-const LaunchableList: React.FC<LaunchableListProps> = ({
-  launchables,
-  runLaunchable
-}) => (
+const LaunchableList: React.FC<LaunchableListProps> = ({ launchables, runLaunchable }) => (
   <div>
     <List>
       {launchables.length
@@ -40,9 +39,7 @@ const mapStateToProps = (state: AppState) => ({
   launchables: getLaunchables(state)
 })
 
-const mapDispatchToProps = (
-  dispatch: ThunkDispatch<AppState, void, AppActionTypes>
-) => ({
+const mapDispatchToProps = (dispatch: ThunkDispatch<AppState, void, AppActionTypes>) => ({
   runLaunchable: (id: number) => dispatch(runLaunchable(id))
 })
 

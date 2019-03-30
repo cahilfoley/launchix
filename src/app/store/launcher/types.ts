@@ -1,4 +1,4 @@
-export interface LauncherState {
+export type LauncherState = {
   nextID: number
   launchables: StoreLaunchable[]
 }
@@ -10,41 +10,39 @@ export const RUN_LAUNCHABLE = 'RUN_LAUNCHABLE'
 export const RUN_LAUNCHABLE_SUCCESS = 'RUN_LAUNCHABLE_SUCCESS'
 export const RUN_LAUNCHABLE_FAILUIRE = 'RUN_LAUNCHABLE_FAILUIRE'
 
-export interface CreateLaunchableAction {
+type CreateLaunchableAction = {
   type: typeof CREATE_LAUNCHABLE
   payload: Launchable
 }
 
-export interface UpdateLaunchableAction {
+type UpdateLaunchableAction = {
   type: typeof UPDATE_LAUNCHABLE
   id: number
   payload: Partial<Launchable>
 }
 
-export interface RunLaunchableAction {
+type DeleteLaunchableAction = {
+  type: typeof DELETE_LAUNCHABLE
+  id: number
+}
+
+type RunLaunchableAction = {
   type: typeof RUN_LAUNCHABLE
   id: number
 }
 
-export interface RunLaunchableSuccessAction {
+export type RunLaunchableSuccessAction = {
   type: typeof RUN_LAUNCHABLE_SUCCESS
   launchable: StoreLaunchable
 }
 
-export interface RunLaunchableFailureAction {
+export type RunLaunchableFailureAction = {
   type: typeof RUN_LAUNCHABLE_FAILUIRE
   launchable: StoreLaunchable
   payload: Error
 }
 
-export interface DeleteLaunchableAction {
-  type: typeof DELETE_LAUNCHABLE
-  id: number
-}
-
-export type RunLauncableOutcomeAction =
-  | RunLaunchableSuccessAction
-  | RunLaunchableFailureAction
+export type RunLauncableOutcomeAction = RunLaunchableSuccessAction | RunLaunchableFailureAction
 
 export type LauncherActionTypes =
   | CreateLaunchableAction

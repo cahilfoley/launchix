@@ -2,11 +2,11 @@ import { exec } from 'child_process'
 const fs = require('fs')
 const path = require('path')
 import { IpcMessageEvent, IpcMain } from 'electron'
-import { LOAD_STATE, IPC_RUN_LAUNCHABLE } from 'shared/ipcTypes'
+import { IPC_LOAD_STATE, IPC_RUN_LAUNCHABLE } from 'shared/ipcTypes'
 
 export function attachEvents(ipcMain: IpcMain) {
-  ipcMain.on(LOAD_STATE, (event: IpcMessageEvent, ...args: any[]) => {
-    console.log(LOAD_STATE, 'event running')
+  ipcMain.on(IPC_LOAD_STATE, (event: IpcMessageEvent, ...args: any[]) => {
+    console.log(IPC_LOAD_STATE, 'event running')
     if (fs.existsSync(path.join(process.cwd(), 'settings/store.json'))) {
       try {
         event.returnValue = JSON.parse(

@@ -6,7 +6,7 @@ import {
   UPDATE_LAUNCHABLE
 } from './types'
 
-const initialState: LauncherState = {
+const initialState: Readonly<LauncherState> = {
   nextID: 1,
   launchables: []
 }

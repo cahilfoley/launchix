@@ -1,4 +1,4 @@
-export interface SystemState {
+export type SystemState = {
   loggedIn: boolean
   session: string
   userName: string
@@ -6,7 +6,7 @@ export interface SystemState {
 
 export const UPDATE_SESSION = 'UPDATE_SESSION'
 
-interface UpdateSessionAction {
+type UpdateSessionAction = {
   type: typeof UPDATE_SESSION
   payload: SystemState
 }

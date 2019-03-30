@@ -37,9 +37,7 @@ export function deleteLaunchable(id: number) {
   }
 }
 
-export function runLaunchableSuccess(
-  launchable: StoreLaunchable
-): RunLaunchableSuccessAction {
+export function runLaunchableSuccess(launchable: StoreLaunchable): RunLaunchableSuccessAction {
   return {
     type: RUN_LAUNCHABLE_SUCCESS,
     launchable
@@ -58,21 +56,15 @@ export function runLaunchableFailure(
 }
 
 export function runLaunchable(id: number): ThunkResult<void> {
-  return (
-    dispatch: Dispatch<RunLauncableOutcomeAction>,
-    getState: () => AppState
-  ) => {
+  return (dispatch: Dispatch<RunLauncableOutcomeAction>, getState: () => AppState) => {
     const launchable = getLaunchable(getState(), id)
-    ipcRenderer.once(
-      'LAUNCHABLE_RESULT',
-      (event: IpcMessageEvent, err?: Error) => {
-        if (err) {
-          dispatch(runLaunchableFailure(launchable, err))
-        } else {
-          dispatch(runLaunchableSuccess(launchable))
-        }
+    ipcRenderer.once('LAUNCHABLE_RESULT', (event: IpcMessageEvent, err?: Error) => {
+      if (err) {
+        dispatch(runLaunchableFailure(launchable, err))
+      } else {
+        dispatch(runLaunchableSuccess(launchable))
       }
-    )
+    })
     ipcRenderer.send(IPC_RUN_LAUNCHABLE, launchable)
   }
 }
